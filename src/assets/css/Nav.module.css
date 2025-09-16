@@ -1,0 +1,139 @@
+/* NAV PEGADO ARRIBA */
+.nav {
+  width: 100%;
+  background-color: #2d8aea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+.logo {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.bienvenida {
+  color: white;
+  text-align: center;
+  flex: 1;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.menuItem {
+  position: relative;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 8px 14px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.menu a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.menuItem.derecha .submenu {
+  left: auto;
+  right: 0;
+}
+
+/* SOLUCIÓN: Añadir espacio invisible entre botón y submenú */
+.menuItem::after {
+  content: '';
+  position: absolute;
+  bottom: -10px; /* Ajusta según necesites */
+  left: 0;
+  width: 100%;
+  height: 15px; /* Altura del espacio de transición */
+  background: transparent;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%; /* Cambiado de 110% a 100% */
+  left: 0;
+  background-color: #1c6ac9;
+  border-radius: 5px;
+  flex-direction: column;
+  min-width: 160px;
+  z-index: 999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  /* Añadir transición suave */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.submenu a {
+  padding: 10px;
+  display: block;
+}
+
+/* SOLUCIÓN: Mostrar submenú al hover del contenedor padre */
+.menuItem:hover .submenu {
+  display: flex;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bienvenida {
+    order: 2;
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu {
+    order: 3;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menuItem {
+    width: 100%;
+    text-align: center;
+  }
+
+  .submenu {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    background-color: #1c6ac9;
+    display: none;
+  }
+
+  .menuItem:hover .submenu {
+    display: block;
+  }
+  
+  /* Eliminar el espacio invisible en móvil */
+  .menuItem::after {
+    display: none;
+  }
+}

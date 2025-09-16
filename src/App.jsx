@@ -1,8 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 // Importar las páginas
-import Home from './componentes/inicio/Home';
-import Info from './componentes/inicio/Info';
+import Home from './componentes/contratante/inicio/Home';
+import Info from './componentes/contratante/inicio/Info';
+import Nav from './componentes/contratante/inicio/Nav';
+import Register from './componentes/contratante/inicio/register';
 
 const App = () => {
   return (
@@ -15,6 +17,9 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/Info" element={<Info />} />
+        <Route path="/Nav" element={<Nav />} />
+        <Route path="/Register" element={<Register />} />
+
         {/* Esta ruta comodín redirige a la ruta raíz si la URL no coincide con ninguna ruta definida.
           Esto es útil si no quieres un componente NotFound.
         */}
