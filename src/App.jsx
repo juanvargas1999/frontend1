@@ -5,6 +5,7 @@ import Home from './componentes/contratante/inicio/Home';
 import Info from './componentes/contratante/inicio/Info';
 import Nav from './componentes/contratante/inicio/Nav';
 import Register from './componentes/contratante/inicio/register';
+import Aspirantes from './componentes/contratante/inicio/Aspirantes';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/Info" element={<Info />} />
         <Route path="/Nav" element={<Nav />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/aspirantes" element={<Aspirantes />} />
 
         {/* Esta ruta comodín redirige a la ruta raíz si la URL no coincide con ninguna ruta definida.
           Esto es útil si no quieres un componente NotFound.

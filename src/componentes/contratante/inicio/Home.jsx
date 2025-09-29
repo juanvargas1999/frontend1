@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import styles from '../../../assets/css/Home.module.css';
+import Nav from './Nav'; // Ajusta la ruta según tu estructura
 
 const Home = () => {
   const [connectionStatus, setConnectionStatus] = useState('Verificando conexión...');
@@ -35,6 +36,9 @@ const Home = () => {
   }, []);
 
   return (
+    <>
+    <Nav />
+    <br></br>
     <div className={styles.contenido}>
       <h1 className={styles.titulo}>Bienvenido!</h1>
       <div className={styles.estadoConexion}>
@@ -45,6 +49,7 @@ const Home = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

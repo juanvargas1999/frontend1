@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Nav from './Nav'; // Ajusta la ruta según tu estructura aqui
 import styles from '../../../assets/css/Register.module.css';
 
 const Register = () => {
@@ -71,90 +72,93 @@ const Register = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.registerForm}>
-        <h2 className={styles.title}>Registro de Usuario</h2>
-        
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={styles.formGroup}>
-            <label htmlFor="nombre_usuario" className={styles.label}>
-              Nombre de Usuario:
-            </label>
-            <input
-              type="text"
-              id="nombre_usuario"
-              name="nombre_usuario"
-              value={formData.nombre_usuario}
-              onChange={handleChange}
-              className={styles.input}
-              required
-              minLength="3"
-            />
-          </div>
+    <>
+      <Nav />
+      <div className={styles.container}>
+        <div className={styles.registerForm}>
+          <h2 className={styles.title}>Registro de Usuario</h2>
+          
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <div className={styles.formGroup}>
+              <label htmlFor="nombre_usuario" className={styles.label}>
+                Nombre de Usuario:
+              </label>
+              <input
+                type="text"
+                id="nombre_usuario"
+                name="nombre_usuario"
+                value={formData.nombre_usuario}
+                onChange={handleChange}
+                className={styles.input}
+                required
+                minLength="3"
+              />
+            </div>
 
-          <div className={styles.formGroup}>
-            <label htmlFor="correo_electronico" className={styles.label}>
-              Correo Electrónico:
-            </label>
-            <input
-              type="email"
-              id="correo_electronico"
-              name="correo_electronico"
-              value={formData.correo_electronico}
-              onChange={handleChange}
-              className={styles.input}
-              required
-            />
-          </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="correo_electronico" className={styles.label}>
+                Correo Electrónico:
+              </label>
+              <input
+                type="email"
+                id="correo_electronico"
+                name="correo_electronico"
+                value={formData.correo_electronico}
+                onChange={handleChange}
+                className={styles.input}
+                required
+              />
+            </div>
 
-          <div className={styles.formGroup}>
-            <label htmlFor="contrasena" className={styles.label}>
-              Contraseña:
-            </label>
-            <input
-              type="password"
-              id="contrasena"
-              name="contrasena"
-              value={formData.contrasena}
-              onChange={handleChange}
-              className={styles.input}
-              required
-              minLength="6"
-            />
-          </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="contrasena" className={styles.label}>
+                Contraseña:
+              </label>
+              <input
+                type="password"
+                id="contrasena"
+                name="contrasena"
+                value={formData.contrasena}
+                onChange={handleChange}
+                className={styles.input}
+                required
+                minLength="6"
+              />
+            </div>
 
-          <div className={styles.formGroup}>
-            <label htmlFor="confirmar_contrasena" className={styles.label}>
-              Confirmar Contraseña:
-            </label>
-            <input
-              type="password"
-              id="confirmar_contrasena"
-              name="confirmar_contrasena"
-              value={formData.confirmar_contrasena}
-              onChange={handleChange}
-              className={styles.input}
-              required
-              minLength="6"
-            />
-          </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="confirmar_contrasena" className={styles.label}>
+                Confirmar Contraseña:
+              </label>
+              <input
+                type="password"
+                id="confirmar_contrasena"
+                name="confirmar_contrasena"
+                value={formData.confirmar_contrasena}
+                onChange={handleChange}
+                className={styles.input}
+                required
+                minLength="6"
+              />
+            </div>
 
-          <button 
-            type="submit" 
-            className={styles.submitButton}
-            disabled={isLoading}
-          >
-            {isLoading ? 'Registrando...' : 'Registrar Usuario'}
-          </button>
-        </form>
+            <button 
+              type="submit" 
+              className={styles.submitButton}
+              disabled={isLoading}
+            >
+              {isLoading ? 'Registrando...' : 'Registrar Usuario'}
+            </button>
+          </form>
 
-        {message && (
-          <div className={message.includes('✅') ? styles.successMessage : styles.errorMessage}>
-            {message}
-          </div>
-        )}
+          {message && (
+            <div className={message.includes('✅') ? styles.successMessage : styles.errorMessage}>
+              {message}
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

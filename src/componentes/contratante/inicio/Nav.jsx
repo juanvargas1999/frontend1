@@ -1,8 +1,23 @@
 import React, { useState } from 'react';
-import styles from '../../../assets/css/Nav.module.css'; // Importamos los estilos como módulo
+import { useNavigate } from 'react-router-dom'; // Importamos useNavigate
+import styles from '../../../assets/css/Nav.module.css';
 
 const Nav = () => {
-  const [usuario] = useState('Usuario'); // Puedes cambiar esto por props o contexto
+  const [usuario] = useState('Usuario');
+  const navigate = useNavigate(); // Hook para navegación
+
+  const handleNuevoUsuario = () => {
+    navigate('/register'); // Navega a la ruta del registro
+  };
+
+  const handleInicio = () => {
+    navigate('/Home'); // Navega a la ruta del Home
+  };
+
+  
+  const handleAdministrarAspirantes = () => {
+    navigate('/aspirantes');
+  };
 
   return (
     <nav className={styles.nav}>
@@ -11,7 +26,7 @@ const Nav = () => {
       
       <div className={styles.menu}>
         <div className={styles.menuItem}>
-          <a href="#">Inicio</a>
+          <a onClick={handleInicio}>Inicio</a>
         </div>
 
         <div className={styles.menuItem}>
@@ -20,17 +35,15 @@ const Nav = () => {
             <a href="#">Administrar Documentos</a>
             <a href="#">Estado del Proceso</a>
             <a href="#">Certificados y descargas</a>
-            
           </div>
         </div>
 
         <div className={styles.menuItem}>
           <a href="#">Aspirantes ▾</a>
           <div className={styles.submenu}>
-            <a href="#">Administrar Aspirantes</a>
+            <a onClick={handleAdministrarAspirantes}>Administrar Aspirantes</a>
             <a href="#">Administrar Empleados</a>
-            <a href="#">Nuevo Aspirante</a>
-            
+            <a onClick={handleNuevoUsuario}>Nuevo Aspirante</a>
           </div>
         </div>
 
