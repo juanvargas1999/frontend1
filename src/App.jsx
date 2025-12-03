@@ -7,6 +7,15 @@ import Nav from './componentes/contratante/inicio/Nav';
 import Register from './componentes/contratante/inicio/register';
 import Aspirantes from './componentes/contratante/inicio/Aspirantes';
 
+// Importar componentes de aspirantes
+import Login from './componentes/aspirantes/login/Login';
+import Dashboard from './componentes/aspirantes/dashboard/Dashboard';
+import ContactarReclutador from './componentes/aspirantes/registro/ContactarReclutador';
+import ProtectedRoute from './componentes/aspirantes/auth/ProtectedRoute';
+
+// Importar componente NotFound
+import NotFound from './componentes/shared/NotFound';
+
 const App = () => {
   return (
     <Router basename="/Proyecto_sena/JEFT_J_R/frontend1/dist">
@@ -22,10 +31,25 @@ const App = () => {
         <Route path="/Register" element={<Register />} />
         <Route path="/aspirantes" element={<Aspirantes />} />
 
-        {/* Esta ruta comodín redirige a la ruta raíz si la URL no coincide con ninguna ruta definida.
-          Esto es útil si no quieres un componente NotFound.
-        */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+        
+        {/* Rutas de aspirantes */}
+        <Route path="/aspirantes/login" element={
+          <ProtectedRoute requireAuth={false}>
+            <Login />
+          </ProtectedRoute>
+        } />
+
+         <Route path="/aspirantes/dashboard" element={
+          <ProtectedRoute requireAuth={true}>
+            <Dashboard />
+          </ProtectedRoute>
+        } />
+
+         {/* Nueva ruta para contactar reclutador */}
+        <Route path="/aspirantes/contactar-reclutador" element={<ContactarReclutador />} />
+      
+        
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
